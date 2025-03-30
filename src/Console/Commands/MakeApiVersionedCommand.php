@@ -50,8 +50,9 @@ class MakeApiVersionedCommand extends Command
 
     protected function createController(Filesystem $fs, string $version, string $name): void
     {
+        $class = "{$name}Controller";
         $namespace = "App\\Http\\Controllers\\Api\\{$version}";
-        $path = app_path("Http/Controllers/Api/{$version}/{$name}.php");
+        $path = app_path("Http/Controllers/Api/{$version}/{$class}.php");
 
         if (!$this->option('force') && $fs->exists($path)) {
             $this->warn("[SKIP] Controller 已存在：{$path}");
