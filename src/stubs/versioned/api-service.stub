@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-class {{ name }}Service
+class {{ name }}
 {
     public function handle(): string
     {

@@ -191,7 +191,7 @@ class MakeApiVersionedCommand extends Command
 
         $stub = $fs->get($stubPath);
         $stub = str_replace(
-            ['{{ namespace }}', '{{ class }}', '{{ uri }}'],
+            ['{{ namespace }}', '{{ name }}', '{{ uri }}'],
             [$namespace, $class, $uri],
             $stub
         );
