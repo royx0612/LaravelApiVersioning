@@ -16,14 +16,20 @@ A Laravel Artisan command that helps you quickly scaffold versioned API componen
 composer require royx0612/laravel-api-versioning --dev
 ```
 
-## Configuration (Optional)
+## Configuration
 
 You can publish the config file and stubs:
 
 ```bash
-php artisan vendor:publish --tag=versioned-config
-php artisan vendor:publish --tag=versioned-stubs
+php artisan vendor:publish --tag=laravel-api-versioning
 ```
+
+This will publish:
+
+- `config/versioned.php`
+- `stubs/vendor/laravel-api-versioning/`
+
+If you want to customize the stubs, you may modify the files inside `stubs/vendor/laravel-api-versioning/` and update your config path accordingly.
 
 ## Usage
 
@@ -55,7 +61,7 @@ This command will create:
 You can customize stub path in `config/versioned.php`:
 
 ```php
-'stub_path' => 'stubs/versioned',
+'stub_path' => 'stubs/vendor/laravel-api-versioning',
 'policy_namespace_prefix' => 'App\Policies',
 ```
 
