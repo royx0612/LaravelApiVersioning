@@ -43,7 +43,7 @@ class MakeApiVersionedCommand extends Command
 
         // 如果自定義路徑不存在，使用套件內建的 stub 路徑
         if (!file_exists($customPath)) {
-            return dirname(__DIR__, 2) . "/stubs/api-{$type}.stub";
+            return base_path(__DIR__ . "/vendor/royx0612/laravel-api-versioning/stubs/api-{$type}.stub");
         }
 
         return $customPath;
