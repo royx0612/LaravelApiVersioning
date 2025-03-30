@@ -1,0 +1,33 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Models\{{ model }};
+
+class {{ class }}
+{
+    public function viewAny($user): bool
+    {
+        return true;
+    }
+
+    public function view($user, {{ model }} $model): bool
+    {
+        return true;
+    }
+
+    public function create($user): bool
+    {
+        return true;
+    }
+
+    public function update($user, {{ model }} $model): bool
+    {
+        return true;
+    }
+
+    public function delete($user, {{ model }} $model): bool
+    {
+        return true;
+    }
+}

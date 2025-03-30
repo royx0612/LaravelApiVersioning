@@ -1,0 +1,14 @@
+<?php
+
+namespace {{ namespace }};
+
+use Tests\TestCase;
+
+class {{ name }}Test extends TestCase
+{
+    public function test_example(): void
+    {
+        $response = $this->getJson('{{ uri }}');
+        $response->assertStatus(200);
+    }
+}

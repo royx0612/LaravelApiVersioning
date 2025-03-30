@@ -1,0 +1,17 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class {{ name }} extends Controller
+{
+    public function index()
+    {
+        return response()->json([
+            'version' => '{{ version }}',
+            'controller' => '{{ name }}'
+        ]);
+    }
+}

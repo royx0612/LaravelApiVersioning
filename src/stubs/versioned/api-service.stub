@@ -1,0 +1,11 @@
+<?php
+
+namespace {{ namespace }};
+
+class {{ name }}Service
+{
+    public function handle(): string
+    {
+        return 'Service logic for {{ version }}';
+    }
+}

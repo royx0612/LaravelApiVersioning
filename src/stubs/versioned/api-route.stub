@@ -1,0 +1,7 @@
+// Auto-generated route for {{ name }}
+Route::prefixVersioned('{{ version }}')->group(function () {
+    Route::get('/{{ uri }}', [
+        \App\Http\Controllers\Api\{{ version }}\{{ name }}::class,
+        'index'
+    ]);
+});
