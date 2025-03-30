@@ -15,8 +15,8 @@ class ApiVersioningServiceProvider extends ServiceProvider
             ]);
 
             $this->publishes([
-                __DIR__ . '/src/config/versioned.php' => config_path('versioned.php'),
-                __DIR__ . '/src/stubs' => base_path('stubs/vendor/laravel-api-versioning'),
+                __DIR__ . '/config/versioned.php' => config_path('versioned.php'),
+                __DIR__ . '/stubs' => base_path('stubs/vendor/laravel-api-versioning'),
             ], 'laravel-api-versioning');
         }
     }
@@ -24,7 +24,8 @@ class ApiVersioningServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/src/config/versioned.php', 'versioned'
+            __DIR__ . '/config/versioned.php',
+            'versioned'
         );
     }
 }
