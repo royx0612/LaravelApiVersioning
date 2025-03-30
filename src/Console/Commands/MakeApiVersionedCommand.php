@@ -36,6 +36,19 @@ class MakeApiVersionedCommand extends Command
         }
     }
 
+    protected function getStubPath(string $type): string
+    {
+        // 首先檢查專案內的自定義 stub 路徑
+        $customPath = base_path(config('versioned.stub_path', 'stubs/versioned') . "/api-{$type}.stub");
+
+        // 如果自定義路徑不存在，使用套件內建的 stub 路徑
+        if (!file_exists($customPath)) {
+            return __DIR__ . "/../../stubs/api-{$type}.stub";
+        }
+
+        return $customPath;
+    }
+
     protected function createController(Filesystem $fs, string $version, string $name): void
     {
         $namespace = "App\\Http\\Controllers\\Api\\{$version}";
@@ -48,7 +61,7 @@ class MakeApiVersionedCommand extends Command
 
         $fs->ensureDirectoryExists(dirname($path));
 
-        $stubPath = base_path(config('versioned.stub_path') . '/api-controller.stub');
+        $stubPath = $this->getStubPath('controller');
         if (!$fs->exists($stubPath)) {
             $this->error("[ERROR] Controller stub 檔案不存在：{$stubPath}");
             return;
@@ -78,7 +91,7 @@ class MakeApiVersionedCommand extends Command
 
         $fs->ensureDirectoryExists(dirname($path));
 
-        $stubPath = base_path(config('versioned.stub_path') . '/api-request.stub');
+        $stubPath = $this->getStubPath('request');
         if (!$fs->exists($stubPath)) {
             $this->error("[ERROR] Request stub 檔案不存在：{$stubPath}");
             return;
@@ -108,7 +121,7 @@ class MakeApiVersionedCommand extends Command
 
         $fs->ensureDirectoryExists(dirname($path));
 
-        $stubPath = base_path(config('versioned.stub_path') . '/api-resource.stub');
+        $stubPath = $this->getStubPath('resource');
         if (!$fs->exists($stubPath)) {
             $this->error("[ERROR] Resource stub 檔案不存在：{$stubPath}");
             return;
@@ -138,7 +151,7 @@ class MakeApiVersionedCommand extends Command
 
         $fs->ensureDirectoryExists(dirname($path));
 
-        $stubPath = base_path(config('versioned.stub_path') . '/api-service.stub');
+        $stubPath = $this->getStubPath('service');
         if (!$fs->exists($stubPath)) {
             $this->error("[ERROR] Service stub 檔案不存在：{$stubPath}");
             return;
@@ -170,7 +183,7 @@ class MakeApiVersionedCommand extends Command
 
         $uri = '/api/' . $version . '/' . Str::kebab(Str::replaceLast('Controller', '', $name));
 
-        $stubPath = base_path(config('versioned.stub_path') . '/api-test.stub');
+        $stubPath = $this->getStubPath('test');
         if (!$fs->exists($stubPath)) {
             $this->error("[ERROR] Test stub 檔案不存在：{$stubPath}");
             return;
@@ -201,7 +214,7 @@ class MakeApiVersionedCommand extends Command
 
         $fs->ensureDirectoryExists(dirname($path));
 
-        $stubPath = base_path(config('versioned.stub_path') . '/api-policy.stub');
+        $stubPath = $this->getStubPath('policy');
         if (!$fs->exists($stubPath)) {
             $this->error("[ERROR] Policy stub 檔案不存在：{$stubPath}");
             return;
@@ -223,7 +236,7 @@ class MakeApiVersionedCommand extends Command
         $routePath = base_path("routes/api.php");
         $uri = Str::kebab(Str::replaceLast('Controller', '', $name));
 
-        $stubPath = base_path(config('versioned.stub_path') . '/api-route.stub');
+        $stubPath = $this->getStubPath('route');
         if (!$fs->exists($stubPath)) {
             $this->error("[ERROR] Route stub 檔案不存在：{$stubPath}");
             return;
