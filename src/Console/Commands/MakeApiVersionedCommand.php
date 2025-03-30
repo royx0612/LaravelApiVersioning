@@ -70,7 +70,7 @@ class MakeApiVersionedCommand extends Command
         $stub = $fs->get($stubPath);
         $stub = str_replace(
             ['{{ namespace }}', '{{ name }}', '{{ version }}'],
-            [$namespace, $name, $version],
+            [$namespace, $class, $version],
             $stub
         );
 
@@ -130,7 +130,7 @@ class MakeApiVersionedCommand extends Command
         $stub = $fs->get($stubPath);
         $stub = str_replace(
             ['{{ namespace }}', '{{ name }}'],
-            [$namespace, $name],
+            [$namespace, $class],
             $stub
         );
 
@@ -159,7 +159,7 @@ class MakeApiVersionedCommand extends Command
 
         $stub = $fs->get($stubPath);
         $stub = str_replace(
-            ['{{ namespace }}', '{{ class }}', '{{ version }}'],
+            ['{{ namespace }}', '{{ name }}', '{{ version }}'],
             [$namespace, $class, $version],
             $stub
         );
