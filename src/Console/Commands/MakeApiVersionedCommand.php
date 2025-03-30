@@ -5,7 +5,6 @@ namespace Royx0612\LaravelApiVersioning\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Config;
 
 class MakeApiVersionedCommand extends Command
 {
